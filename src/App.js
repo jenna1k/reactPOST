@@ -1,42 +1,25 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
 import "./App.css";
-
-import Quote from "./Quote";
+import Home from './Home';
+import History from './History';
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      API:  sample
-    };
-  }
-  handleClick = () => {
-    fetch("https://thesimpsonsquoteapi.glitch.me/quotes")
-      .then(response => response.json())
-      .then(data => { this. setState({ API: data[0]})})
-  };
+    render() {
+        return (
+            <BrowserRouter>
+              <div>
+                <NavLink exact to="/" activeClassName="selected" activeStyle={{color: "red"}}> Home </NavLink>
+                <NavLink to="/our-history" activeClassName="selected" activeStyle={{color: "red"}}> History </NavLink>
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <button onClick={this.handleClick} className="btn">
-            SWITCH
-          </button>
-        <Quote API={this.state.API} />
-        </header>
-      </div>
-    );
-  }
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/our-history" component={History} />
+                </Switch>
+              </div>
+            </BrowserRouter>
+        );
+    }
 }
-
-const sample = {
-  quote : "I believe the children are the future... Unless we stop them now!",
-  character : "Homer Simpson",
-  image : 'https://i.dlpng.com/static/png/15389_thumb.png'
-}
-
-
 
 export default App;
