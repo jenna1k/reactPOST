@@ -1,7 +1,7 @@
 {
   "name": "state",
   "version": "0.1.0",
-  "homepage": "https://jenna1k.github.io/react_api",
+  "homepage": "https://jenna1k.github.io/react-router",
   "private": true,
   "dependencies": {
     "gh-pages": "^2.0.1",
