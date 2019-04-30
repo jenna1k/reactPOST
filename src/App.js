@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
 import "./App.css";
-import Home from './Home';
-import History from './History';
+import Home from './pages/Home';
+import History from './pages/History';
 
 class App extends Component {
     render() {
@@ -14,6 +14,7 @@ class App extends Component {
 
                 <Switch>
                   <Route exact path="/" component={Home} />
+                  <Route path="/react-router/" component={Home}/>
                   <Route path="/our-history" component={History} />
                 </Switch>
               </div>
