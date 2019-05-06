@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
 import "./App.css";
-import Home from './pages/Home';
-import History from './pages/History';
+import Clock from './Clock'
+import Next from './Next'
 
 class App extends Component {
-    render() {
+  render() {
         return (
-            <BrowserRouter>
-              <div>
-                <NavLink exact to="/" activeClassName="selected" activeStyle={{color: "red"}}> Home </NavLink>
-                <NavLink to="/our-history" activeClassName="selected" activeStyle={{color: "red"}}> History </NavLink>
+          <BrowserRouter>
+            <div>
+              <NavLink exact to="/" activeClassName="selected" activeStyle={{color: "red"}}> Home </NavLink>
+              <NavLink to="/Next" activeClassName="selected" activeStyle={{color: "red"}}> Next </NavLink>
 
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/react-router/" component={Home}/>
-                  <Route path="/our-history" component={History} />
-                </Switch>
-              </div>
-            </BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Clock} />
+                <Route path="/Next" component={Next} />
+              </Switch>
+            </div>
+        </BrowserRouter>
         );
     }
 }
