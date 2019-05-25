@@ -4,9 +4,9 @@ class Form extends Component {
   constructor(props) {
       super(props);
       this.state = {
-      lastname: '',
-      firstname: '',
-      email: '',
+      film: '',
+      poster: '',
+      comment: '',
       }
       this.onChange = this.onChange.bind(this);
       this.submitForm = this.submitForm.bind(this);
@@ -19,7 +19,7 @@ class Form extends Component {
         body: JSON.stringify(this.state),
       };
 
-    const url = "http://campus-bordeaux.ovh:3001/api/quests/employees/";
+    const url = "http://campus-bordeaux.ovh:3001/api/quests/movies/";
 
     fetch(url, config)
     .then(res => res.json())
@@ -27,11 +27,11 @@ class Form extends Component {
       if (res.error) {
         alert(res.error);
       } else {
-        alert(`Added employee with the ID ${res}!`);
+        alert(`Added movie with the ID ${res}!`);
       }
     }).catch(e => {
       console.error(e);
-      alert('Error during l\'an employee addition');
+      alert('Error!!');
     });
 
   }
@@ -48,47 +48,47 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="FormEmployee">
-        <h1> employee’s entry</h1>
+      <div className="favorite film">
+        <h1> enter your favorite film</h1>
 
         <form onSubmit={this.submitForm}>
           <fieldset>
             <legend>Information</legend>
             <div className="form-data">
-              <label htmlFor="lastname">Nom</label>
+              <label htmlFor="film">Name of film</label>
               <input
                 type="text"
-                id="lastname"
-                name="lastname"
+                id="film"
+                name="film"
                 onChange={this.onChange}
-                value={this.state.lastname}
+                value={this.state.film}
               />
             </div>
 
             <div className="form-data">
-              <label htmlFor="firstname">Prénom</label>
+              <label htmlFor="poster">film poster URL</label>
               <input
                 type="text"
-                id="firstname"
-                name="firstname"
+                id="poster"
+                name="poster"
                 onChange={this.onChange}
-                value={this.state.firstname}
+                value={this.state.poster}
               />
             </div>
 
             <div className="form-data">
-              <label htmlFor="email">E-mail</label>
+              <label htmlFor="comment">why do you like this film?</label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                type="text"
+                id="comment"
+                name="comment"
                 onChange={this.onChange}
-                value={this.state.email}
+                value={this.state.comment}
               />
             </div>
             <hr />
             <div className="form-data">
-              <input type="submit" value="Envoyer" />
+              <input type="submit" value="submit" />
             </div>
           </fieldset>
         </form>
